@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Lavanderia COP 30
 
-## Getting Started
+Site de página única da **Lavanderia COP 30**, desenvolvido com [Next.js](https://nextjs.org) e [Tailwind CSS](https://tailwindcss.com).
 
-First, run the development server:
+## Pré-requisitos
+
+- [Node.js](https://nodejs.org/) 18.18 ou superior (recomendado: versão LTS)
+- npm (incluído com o Node.js)
+
+## Como rodar o projeto
+
+1. Clone o repositório:
+
+```bash
+git clone https://github.com/ramou1/lavanderiacop30.git
+cd lavanderiacop30
+```
+
+2. Instale as dependências:
+
+```bash
+npm install
+```
+
+3. Inicie o servidor de desenvolvimento:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Abra [http://localhost:3000](http://localhost:3000) no navegador.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+A página recarrega automaticamente ao editar os arquivos em `app/` e `components/`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Scripts disponíveis
 
-## Learn More
+| Comando        | Descrição                                      |
+| -------------- | ---------------------------------------------- |
+| `npm run dev`  | Servidor de desenvolvimento (hot reload)       |
+| `npm run build`| Gera a versão de produção                      |
+| `npm run start`| Executa a build de produção (após `build`)     |
+| `npm run lint` | Verifica o código com ESLint                   |
 
-To learn more about Next.js, take a look at the following resources:
+## Build de produção
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run build
+npm run start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+O site ficará disponível em [http://localhost:3000](http://localhost:3000).
 
-## Deploy on Vercel
+## Estrutura do projeto
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+app/
+  page.tsx          # Página única com todas as seções
+  layout.tsx        # Layout raiz e metadata
+  globals.css       # Cores da marca e estilos globais
+components/
+  Header.tsx        # Menu âncora fixo
+  Footer.tsx        # Rodapé
+lib/
+  constants.ts      # Nome do site, navegação e contato
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Personalização
+
+Edite `lib/constants.ts` para atualizar telefone, e-mail, endereço e horário de funcionamento.
+
+## Repositório
+
+[github.com/ramou1/lavanderiacop30](https://github.com/ramou1/lavanderiacop30)
