@@ -1,11 +1,53 @@
+@font-face {
+  font-family: 'Inter';
+  src: url('/assets/fonts/Inter_18pt-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('/assets/fonts/Inter_18pt-Medium.ttf') format('truetype');
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('/assets/fonts/Inter_18pt-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('/assets/fonts/Inter_18pt-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Axiforma';
+  src: url('/assets/fonts/Axiforma-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Axiforma';
+  src: url('/assets/fonts/Axiforma-Medium.ttf') format('truetype');
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Axiforma';
+  src: url('/assets/fonts/Axiforma-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'Axiforma';
+  src: url('/assets/fonts/Axiforma-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+
 @import "tailwindcss";
 
 :root {
-  --brand-lime: #c8f135;
-  --brand-blue: #0c2340;
-  --brand-blue-light: #14325a;
+  --brand-lime: #7ce75c;
+  --brand-blue: #07176d;
   --background: #f8fafc;
-  --foreground: #0c2340;
+  --foreground: #07176d;
+  --font-title: 'Axiforma', sans-serif;
+  --font-body: 'Inter', sans-serif;
 }
 
 @theme inline {
@@ -25,5 +67,21 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-title);
+}
+
+h1 {
+  font-weight: 700;
+}
+
+h2, h3 {
+  font-weight: 600;
+}
+
+h4, h5, h6 {
+  font-weight: 500;
 }
