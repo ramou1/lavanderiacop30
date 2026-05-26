@@ -99,7 +99,7 @@ export default function Home() {
 
         <section
           id="sobre"
-          className="scroll-mt-20 bg-brand-blue-light px-4 py-20 text-white sm:px-6 lg:px-8"
+          className="scroll-mt-20 bg-brand-blue px-4 py-20 text-white sm:px-6 lg:px-8"
         >
           <div className="mx-auto max-w-6xl">
             <h2 className="text-3xl font-bold text-brand-lime sm:text-4xl">
