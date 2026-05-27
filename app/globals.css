@@ -1,41 +1,41 @@
 @font-face {
   font-family: 'Inter';
-  src: url('/assets/fonts/Inter_18pt-Regular.ttf') format('truetype');
+  src: url('/assets/fonts/inter/Inter-Regular.ttf') format('truetype');
   font-weight: 400;
 }
 @font-face {
   font-family: 'Inter';
-  src: url('/assets/fonts/Inter_18pt-Medium.ttf') format('truetype');
+  src: url('/assets/fonts/inter/Inter-Medium.ttf') format('truetype');
   font-weight: 500;
 }
 @font-face {
   font-family: 'Inter';
-  src: url('/assets/fonts/Inter_18pt-SemiBold.ttf') format('truetype');
+  src: url('/assets/fonts/inter/Inter-SemiBold.ttf') format('truetype');
   font-weight: 600;
 }
 @font-face {
   font-family: 'Inter';
-  src: url('/assets/fonts/Inter_18pt-Bold.ttf') format('truetype');
+  src: url('/assets/fonts/inter/Inter-Bold.ttf') format('truetype');
   font-weight: 700;
 }
 @font-face {
   font-family: 'Axiforma';
-  src: url('/assets/fonts/Axiforma-Regular.ttf') format('truetype');
+  src: url('/assets/fonts/axiforma/Axiforma-Regular.ttf') format('truetype');
   font-weight: 400;
 }
 @font-face {
   font-family: 'Axiforma';
-  src: url('/assets/fonts/Axiforma-Medium.ttf') format('truetype');
+  src: url('/assets/fonts/axiforma/Axiforma-Medium.ttf') format('truetype');
   font-weight: 500;
 }
 @font-face {
   font-family: 'Axiforma';
-  src: url('/assets/fonts/Axiforma-SemiBold.ttf') format('truetype');
+  src: url('/assets/fonts/axiforma/Axiforma-SemiBold.ttf') format('truetype');
   font-weight: 600;
 }
 @font-face {
   font-family: 'Axiforma';
-  src: url('/assets/fonts/Axiforma-Bold.ttf') format('truetype');
+  src: url('/assets/fonts/axiforma/Axiforma-Bold.ttf') format('truetype');
   font-weight: 700;
 }
 

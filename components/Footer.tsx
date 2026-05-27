@@ -1,3 +1,5 @@
+import { InstagramIcon } from "@/components/InstagramIcon";
+import { Logo } from "@/components/Logo";
 import { CONTACT, NAV_LINKS, SITE_NAME } from "@/lib/constants";
 
 const currentYear = new Date().getFullYear();
@@ -8,11 +10,14 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           <div>
-            <p className="text-lg font-bold text-brand-lime">{SITE_NAME}</p>
-            <p className="mt-3 text-sm leading-relaxed">
-              Lavanderia de confiança na COP 30. Roupas limpas, secas e
-              prontas para o seu dia a dia.
+            <Logo />
+            <p className="mt-4 text-sm leading-relaxed">
+              Lavanderia de confiança no {CONTACT.location}. Roupas limpas,
+              secas e prontas para o seu dia a dia.
             </p>
+            <div className="mt-4">
+              <InstagramIcon />
+            </div>
           </div>
 
           <div>
