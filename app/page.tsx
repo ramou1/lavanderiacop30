@@ -1,6 +1,12 @@
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
-import { CONTACT, SITE_NAME } from "@/lib/constants";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
+import {
+  CONTACT,
+  MACHINES,
+  PRODUCTS,
+  SITE_NAME,
+} from "@/lib/constants";
 
 const SERVICES = [
   {
@@ -33,19 +39,21 @@ export default function Home() {
       <main>
         <section
           id="inicio"
-          className="bg-brand-blue px-4 py-20 text-white sm:px-6 sm:py-28 lg:px-8"
+          className="bg-brand-blue px-4 py-16 text-white sm:px-6 sm:py-24 lg:px-8 lg:py-28"
         >
           <div className="mx-auto max-w-6xl">
             <p className="text-sm font-semibold uppercase tracking-widest text-brand-lime">
               Bem-vindo
             </p>
-            <h1 className="mt-4 max-w-2xl text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+            <h1 className="mt-4 max-w-2xl text-3xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
               Suas roupas limpas, com a qualidade da{" "}
               <span className="text-brand-lime">{SITE_NAME}</span>
             </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/85">
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg">
               Lavagem, secagem e passadoria com agilidade e atendimento
-              próximo. Deixe a roupa suja conosco e ganhe tempo no seu dia.
+              próximo. Localizados no{" "}
+              <strong className="text-white">{CONTACT.location}</strong>, em
+              São José dos Campos.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <a
@@ -66,7 +74,7 @@ export default function Home() {
 
         <section
           id="servicos"
-          className="scroll-mt-20 bg-background px-4 py-20 sm:px-6 lg:px-8"
+          className="scroll-mt-20 bg-background px-4 py-16 sm:px-6 sm:py-20 lg:px-8"
         >
           <div className="mx-auto max-w-6xl">
             <div className="max-w-2xl">
@@ -98,14 +106,47 @@ export default function Home() {
         </section>
 
         <section
-          id="sobre"
-          className="scroll-mt-20 bg-brand-blue px-4 py-20 text-white sm:px-6 lg:px-8"
+          id="produtos"
+          className="scroll-mt-20 bg-brand-blue px-4 py-16 text-white sm:px-6 sm:py-20 lg:px-8"
         >
           <div className="mx-auto max-w-6xl">
-            <h2 className="text-3xl font-bold text-brand-lime sm:text-4xl">
+            <div className="max-w-2xl">
+              <h2 className="text-3xl font-bold text-brand-lime sm:text-4xl">
+                Produtos
+              </h2>
+              <p className="mt-4 text-lg text-white/85">
+                Utilizamos marcas reconhecidas para garantir limpeza, cuidado
+                e perfume duradouro nas suas roupas.
+              </p>
+            </div>
+
+            <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {PRODUCTS.map(({ name, brand }) => (
+                <li
+                  key={name}
+                  className="rounded-xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm"
+                >
+                  <h3 className="text-xl font-semibold text-brand-lime">
+                    {name}
+                  </h3>
+                  <p className="mt-2 text-white/80">
+                    Marca: <span className="font-medium text-white">{brand}</span>
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        <section
+          id="sobre"
+          className="scroll-mt-20 bg-background px-4 py-16 sm:px-6 sm:py-20 lg:px-8"
+        >
+          <div className="mx-auto max-w-6xl">
+            <h2 className="text-3xl font-bold text-brand-blue sm:text-4xl">
               Sobre nós
             </h2>
-            <div className="mt-6 max-w-3xl space-y-4 text-lg leading-relaxed text-white/90">
+            <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-brand-blue/80 sm:text-lg">
               <p>
                 A {SITE_NAME} nasceu para oferecer um serviço de lavanderia
                 acessível, confiável e com atendimento humano. Trabalhamos com
@@ -113,17 +154,44 @@ export default function Home() {
                 peças como se fossem nossas.
               </p>
               <p>
-                Atendemos moradores, comércios e eventos na região da COP 30,
-                com prazos combinados e transparência no orçamento. Sua
-                satisfação é o que nos move todos os dias.
+                Estamos localizados no <strong>{CONTACT.location}</strong>, em
+                São José dos Campos, com prazos combinados e transparência no
+                orçamento. Sua satisfação é o que nos move todos os dias.
               </p>
+            </div>
+
+            <div className="mt-10 rounded-xl border border-brand-blue/10 bg-white p-6 shadow-sm sm:p-8">
+              <h3 className="text-xl font-semibold text-brand-blue">
+                Nossas máquinas
+              </h3>
+              <p className="mt-3 text-brand-blue/75">
+                Contamos com 4 máquinas de lavagem para atender diferentes
+                volumes de roupa:
+              </p>
+              <ul className="mt-6 grid gap-4 sm:grid-cols-3">
+                {MACHINES.map((machine) => (
+                  <li
+                    key={machine.size}
+                    className="rounded-lg bg-brand-blue/5 px-4 py-5 text-center"
+                  >
+                    <p className="text-3xl font-bold text-brand-blue">
+                      {machine.quantity}x {machine.size}
+                    </p>
+                    {"highlight" in machine && machine.highlight && (
+                      <p className="mt-2 text-sm font-medium text-brand-blue">
+                        Máquina GG única em São José dos Campos
+                      </p>
+                    )}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </section>
 
         <section
           id="contato"
-          className="scroll-mt-20 px-4 py-20 sm:px-6 lg:px-8"
+          className="scroll-mt-20 px-4 py-16 sm:px-6 sm:py-20 lg:px-8"
         >
           <div className="mx-auto max-w-6xl">
             <h2 className="text-3xl font-bold text-brand-blue sm:text-4xl">
@@ -166,6 +234,7 @@ export default function Home() {
       </main>
 
       <Footer />
+      <WhatsAppButton />
     </>
   );
 }
