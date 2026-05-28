@@ -323,7 +323,7 @@ export default function Home() {
             <div className="mt-10 grid gap-4 md:grid-cols-2">
               <div className="relative h-64 overflow-hidden rounded-2xl md:h-[32rem]">
                 <Image
-                  src="/assets/images/hotel-grandsky_urbanova-principal.png"
+                  src="/assets/images/hotel-grandsky_urbanova-principal.jpeg"
                   alt="Fachada do Hotel Grandsky Urbanova"
                   fill
                   className="object-cover"
