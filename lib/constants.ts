@@ -4,7 +4,7 @@ export const LOGO_SRC = "/assets/images/logo01.png";
 
 export const INSTAGRAM_URL = "https://www.instagram.com/cop30lavanderia/";
 
-export const WHATSAPP_NUMBER = "5512999999999";
+export const WHATSAPP_NUMBER = "5512988767170";
 
 export const NAV_LINKS = [
   { href: "#inicio", label: "Início" },
@@ -27,7 +27,7 @@ export const MACHINES = [
 ] as const;
 
 export const CONTACT = {
-  phone: "(12) 99999-9999",
+  phone: "(12) 98876-7170",
   email: "contato@lavanderiacop30.com.br",
   address: "Grand Sky Hotel — São José dos Campos, SP",
   location: "Grand Sky Hotel",
