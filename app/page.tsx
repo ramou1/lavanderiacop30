@@ -1,6 +1,10 @@
+"use client";
+
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 import {
   CONTACT,
   MACHINES,
@@ -32,6 +36,89 @@ const SERVICES = [
 ] as const;
 
 export default function Home() {
+  const reviews = [
+    {
+      initial: "H",
+      name: "Humberto Camilo",
+      text: "Equipe simpática, ter academia é um diferencial.",
+    },
+    {
+      initial: "C",
+      name: "Camila Pappalardo",
+      text: "Ótimo atendimento, lugar impecável!",
+    },
+    {
+      initial: "P",
+      name: "Priscilla Neri",
+      text: "Excelente atendimento e ótima localização.",
+    },
+    {
+      initial: "M",
+      name: "Maria Jose Souza",
+      text: "Foi maravilhoso",
+    },
+    {
+      initial: "F",
+      name: "Francisca Roberlania Souza Ferreira",
+      text: "Muito bom.",
+    },
+    {
+      initial: "D",
+      name: "Diego Del Rosso",
+      text: "Excelente",
+    },
+  ] as const;
+  const [activeReview, setActiveReview] = useState(0);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [dragOffset, setDragOffset] = useState(0);
+  const [isTouching, setIsTouching] = useState(false);
+  const [desktopProgress, setDesktopProgress] = useState(0);
+  const [isDesktopPaused, setIsDesktopPaused] = useState(false);
+  const [isDesktopDragging, setIsDesktopDragging] = useState(false);
+  const [desktopDragOffset, setDesktopDragOffset] = useState(0);
+  const [desktopDragStartX, setDesktopDragStartX] = useState<number | null>(null);
+  const desktopAnimationFrameRef = useRef<number | null>(null);
+  const desktopLastTimeRef = useRef<number | null>(null);
+  const desktopViewportRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (isTouching) return;
+
+    const interval = setInterval(() => {
+      setActiveReview((prev) => (prev + 1) % reviews.length);
+    }, 4500);
+
+    return () => clearInterval(interval);
+  }, [isTouching, reviews.length]);
+
+  useEffect(() => {
+    const speedCardsPerMs = 0.00006;
+
+    const animate = (time: number) => {
+      if (desktopLastTimeRef.current === null) {
+        desktopLastTimeRef.current = time;
+      }
+
+      const delta = time - desktopLastTimeRef.current;
+      desktopLastTimeRef.current = time;
+
+      if (!isDesktopPaused) {
+        setDesktopProgress((prev) => (prev + delta * speedCardsPerMs) % reviews.length);
+      }
+
+      desktopAnimationFrameRef.current = requestAnimationFrame(animate);
+    };
+
+    desktopAnimationFrameRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      if (desktopAnimationFrameRef.current !== null) {
+        cancelAnimationFrame(desktopAnimationFrameRef.current);
+      }
+      desktopLastTimeRef.current = null;
+    };
+  }, [isDesktopPaused, reviews.length]);
+
   return (
     <>
       <Header />
@@ -185,6 +272,298 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="hotel"
+          className="scroll-mt-20 px-4 py-16 sm:px-6 sm:py-20 lg:px-8"
+          style={{ backgroundColor: "var(--foreground)" }}
+        >
+          <div className="mx-auto max-w-6xl">
+            <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
+              <div>
+                <p
+                  className="text-sm font-semibold uppercase tracking-[0.2em]"
+                  style={{ color: "#7ce75c", fontFamily: "var(--font-body)" }}
+                >
+                  HOSPEDAGEM
+                </p>
+                <h2
+                  className="mt-4 text-3xl font-bold sm:text-4xl"
+                  style={{ color: "#ffffff", fontFamily: "var(--font-title)" }}
+                >
+                  Hotel Grandsky Urbanova
+                </h2>
+                <div
+                  className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm sm:text-base"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  <span className="font-semibold" style={{ color: "#ffffff" }}>
+                    4,7
+                  </span>
+                  <span className="tracking-wide text-amber-400">★★★★★</span>
+                  <span style={{ color: "rgba(255,255,255,0.75)" }}>
+                    18 avaliações no Google
+                  </span>
+                </div>
+              </div>
+
+              <p
+                className="text-base leading-relaxed sm:text-lg"
+                style={{ color: "#ffffff", fontFamily: "var(--font-body)" }}
+              >
+                A lavanderia fica no térreo do próprio hotel, mesma estrutura. Hóspedes deixam as roupas na
+                portaria e retiram prontas, sem precisar sair do prédio.
+                Comodidade total para quem está hospedado no Grandsky Urbanova.
+              </p>
+            </div>
+
+            <div className="mt-10 grid gap-4 md:grid-cols-2">
+              <div className="relative h-64 overflow-hidden rounded-2xl md:h-[32rem]">
+                <Image
+                  src="/assets/images/hotel-grandsky_urbanova-principal.png"
+                  alt="Fachada do Hotel Grandsky Urbanova"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="grid gap-4 sm:grid-rows-2">
+                <div className="relative h-64 overflow-hidden rounded-2xl sm:h-[15.5rem]">
+                  <Image
+                    src="/assets/images/hotel-grandsky_urbanova-2.png"
+                    alt="Área interna do Hotel Grandsky Urbanova"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="relative h-64 overflow-hidden rounded-2xl sm:h-[15.5rem]">
+                  <Image
+                    src="/assets/images/hotel-grandsky_urbanova-3.png"
+                    alt="Ambiente do Hotel Grandsky Urbanova"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              {[
+                "Academia",
+                "Estacionamento",
+                "Wi-Fi",
+                "Lavanderia",
+                "Ar-condicionado",
+              ].map((item) => (
+                <span
+                  key={item}
+                  className="rounded-full border px-4 py-2 text-sm"
+                  style={{
+                    borderColor: "rgba(255,255,255,0.35)",
+                    color: "#ffffff",
+                    fontFamily: "var(--font-body)",
+                  }}
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+
+            <div
+              className="mt-10 overflow-hidden lg:hidden"
+              onTouchStart={(event) => {
+                setIsTouching(true);
+                setTouchStartX(event.touches[0]?.clientX ?? null);
+              }}
+              onTouchMove={(event) => {
+                if (touchStartX === null) return;
+                const currentX = event.touches[0]?.clientX ?? touchStartX;
+                setDragOffset(currentX - touchStartX);
+              }}
+              onTouchEnd={() => {
+                if (dragOffset <= -50) {
+                  setActiveReview((prev) => (prev + 1) % reviews.length);
+                } else if (dragOffset >= 50) {
+                  setActiveReview(
+                    (prev) => (prev - 1 + reviews.length) % reviews.length,
+                  );
+                }
+                setDragOffset(0);
+                setTouchStartX(null);
+                setIsTouching(false);
+              }}
+              onTouchCancel={() => {
+                setDragOffset(0);
+                setTouchStartX(null);
+                setIsTouching(false);
+              }}
+            >
+              <div
+                className="flex"
+                style={{
+                  transform: `translateX(calc(${-activeReview * 100}% + ${dragOffset}px))`,
+                  transition: isTouching ? "none" : "transform 900ms ease",
+                }}
+              >
+                {reviews.map((review) => (
+                  <article
+                    key={`${review.initial}-mobile`}
+                    className="w-full shrink-0 rounded-2xl border p-6"
+                    style={{
+                      backgroundColor: "rgba(7,23,109,0.82)",
+                      borderColor: "#ffffff",
+                    }}
+                  >
+                    <div className="flex items-center gap-3">
+                      <span
+                        className="inline-flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold"
+                        style={{
+                          backgroundColor: "#7ce75c",
+                          color: "#07176d",
+                          fontFamily: "var(--font-title)",
+                        }}
+                      >
+                        {review.initial}
+                      </span>
+                      <div>
+                        <p
+                          className="text-sm font-semibold"
+                          style={{
+                            color: "#ffffff",
+                            fontFamily: "var(--font-body)",
+                          }}
+                        >
+                          {review.name}
+                        </p>
+                        <span className="text-amber-400">★★★★★</span>
+                      </div>
+                    </div>
+                    <p
+                      className="mt-4 text-sm leading-relaxed"
+                      style={{ color: "#ffffff", fontFamily: "var(--font-body)" }}
+                    >
+                      {review.text}
+                    </p>
+                    <p
+                      className="mt-4 text-xs"
+                      style={{
+                        color: "rgba(255,255,255,0.65)",
+                        fontFamily: "var(--font-body)",
+                      }}
+                    >
+                      Avaliação no Google
+                    </p>
+                  </article>
+                ))}
+              </div>
+            </div>
+
+            <div
+              className="mt-10 hidden overflow-hidden lg:block"
+              onMouseEnter={() => setIsDesktopPaused(true)}
+              onMouseLeave={() => {
+                if (!isDesktopDragging) setIsDesktopPaused(false);
+              }}
+              onPointerDown={(event) => {
+                setIsDesktopDragging(true);
+                setIsDesktopPaused(true);
+                setDesktopDragStartX(event.clientX);
+                setDesktopDragOffset(0);
+                event.currentTarget.setPointerCapture(event.pointerId);
+              }}
+              onPointerMove={(event) => {
+                if (!isDesktopDragging || desktopDragStartX === null) return;
+                setDesktopDragOffset(event.clientX - desktopDragStartX);
+              }}
+              onPointerUp={(event) => {
+                if (!isDesktopDragging) return;
+                const viewportWidth = desktopViewportRef.current?.clientWidth ?? 0;
+                const cardWidth = viewportWidth / 3;
+
+                if (cardWidth > 0) {
+                  const deltaProgress = desktopDragOffset / cardWidth;
+                  setDesktopProgress((prev) => {
+                    const next = (prev - deltaProgress) % reviews.length;
+                    return next < 0 ? next + reviews.length : next;
+                  });
+                }
+
+                setDesktopDragOffset(0);
+                setDesktopDragStartX(null);
+                setIsDesktopDragging(false);
+                setIsDesktopPaused(false);
+                event.currentTarget.releasePointerCapture(event.pointerId);
+              }}
+              onPointerCancel={(event) => {
+                setDesktopDragOffset(0);
+                setDesktopDragStartX(null);
+                setIsDesktopDragging(false);
+                setIsDesktopPaused(false);
+                event.currentTarget.releasePointerCapture(event.pointerId);
+              }}
+            >
+              <div
+                ref={desktopViewportRef}
+                className="-mx-2 flex"
+                style={{
+                  transform: `translateX(calc(-${desktopProgress * (100 / 3)}% + ${desktopDragOffset}px))`,
+                  cursor: isDesktopDragging ? "grabbing" : "grab",
+                }}
+              >
+                {[...reviews, ...reviews].map((review, index) => (
+                  <div key={`${review.initial}-desktop-${index}`} className="w-1/3 shrink-0 px-2">
+                    <article
+                      className="rounded-2xl border p-6"
+                      style={{
+                        backgroundColor: "rgba(7,23,109,0.82)",
+                        borderColor: "#ffffff",
+                      }}
+                    >
+                      <div className="flex items-center gap-3">
+                        <span
+                          className="inline-flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold"
+                          style={{
+                            backgroundColor: "#7ce75c",
+                            color: "#07176d",
+                            fontFamily: "var(--font-title)",
+                          }}
+                        >
+                          {review.initial}
+                        </span>
+                        <div>
+                          <p
+                            className="text-sm font-semibold"
+                            style={{
+                              color: "#ffffff",
+                              fontFamily: "var(--font-body)",
+                            }}
+                          >
+                            {review.name}
+                          </p>
+                          <span className="text-amber-400">★★★★★</span>
+                        </div>
+                      </div>
+                      <p
+                        className="mt-4 text-sm leading-relaxed"
+                        style={{ color: "#ffffff", fontFamily: "var(--font-body)" }}
+                      >
+                        {review.text}
+                      </p>
+                      <p
+                        className="mt-4 text-xs"
+                        style={{
+                          color: "rgba(255,255,255,0.65)",
+                          fontFamily: "var(--font-body)",
+                        }}
+                      >
+                        Avaliação no Google
+                      </p>
+                    </article>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
