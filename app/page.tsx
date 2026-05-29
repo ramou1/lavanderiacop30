@@ -80,6 +80,12 @@ export default function Home() {
   const desktopAnimationFrameRef = useRef<number | null>(null);
   const desktopLastTimeRef = useRef<number | null>(null);
   const desktopViewportRef = useRef<HTMLDivElement | null>(null);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+  const hotelImages = [
+    { src: "/assets/images/hotel-grandsky_urbanova-principal.png", alt: "Fachada do Hotel Grandsky Urbanova" },
+    { src: "/assets/images/ambiente-lavanderia-urbanova-01.png", alt: "Área interna da lavanderia do cop30" },
+  ];
 
   useEffect(() => {
     if (isTouching) return;
@@ -276,6 +282,10 @@ export default function Home() {
           </div>
         </section>
 
+        <div className="h-2" style={{
+  background: "linear-gradient(to bottom, #f8fafc, #07176d)"
+      }} />
+
         <section
           id="hotel"
           className="scroll-mt-20 px-4 py-16 sm:px-6 sm:py-20 lg:px-8"
@@ -321,33 +331,92 @@ export default function Home() {
             </div>
 
             <div className="mt-10 grid gap-4 md:grid-cols-2">
-              <div className="relative h-64 overflow-hidden rounded-2xl md:h-[32rem]">
+              <div
+                className="relative h-64 overflow-hidden rounded-2xl md:h-[32rem] cursor-zoom-in"
+                onClick={() => { setLightboxIndex(0); setLightboxOpen(true); }}
+              >
                 <Image
-                  src="/assets/images/hotel-grandsky_urbanova-principal.png"
-                  alt="Fachada do Hotel Grandsky Urbanova"
+                  src={hotelImages[0].src}
+                  alt={hotelImages[0].alt}
                   fill
-                  className="object-cover"
+                  className="object-cover object-center transition-transform duration-300 hover:scale-105"
                 />
               </div>
-              <div className="grid gap-4 sm:grid-rows-2">
-                <div className="relative h-64 overflow-hidden rounded-2xl sm:h-[15.5rem]">
-                  <Image
-                    src="/assets/images/hotel-grandsky_urbanova-2.png"
-                    alt="Área interna do Hotel Grandsky Urbanova"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="relative h-64 overflow-hidden rounded-2xl sm:h-[15.5rem]">
-                  <Image
-                    src="/assets/images/hotel-grandsky_urbanova-3.png"
-                    alt="Ambiente do Hotel Grandsky Urbanova"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
+              <div
+                className="relative h-64 overflow-hidden rounded-2xl md:h-[32rem] cursor-zoom-in"
+                onClick={() => { setLightboxIndex(1); setLightboxOpen(true); }}
+              >
+                <Image
+                  src={hotelImages[1].src}
+                  alt={hotelImages[1].alt}
+                  fill
+                  className="object-cover object-right transition-transform duration-300 hover:scale-105"
+                />
               </div>
             </div>
+
+            {/* Lightbox */}
+            {lightboxOpen && (
+              <div
+                className="fixed inset-0 z-50 flex items-center justify-center"
+                style={{ backgroundColor: "rgba(0,0,0,0.92)" }}
+                onClick={() => setLightboxOpen(false)}
+              >
+                {/* Botão fechar */}
+                <button
+                  className="absolute top-5 right-5 text-white text-3xl font-bold z-10 hover:opacity-70 transition-opacity"
+                  onClick={() => setLightboxOpen(false)}
+                >
+                  ✕
+                </button>
+
+                {/* Seta esquerda */}
+                <button
+                  className="absolute left-4 text-white text-4xl font-bold z-10 hover:opacity-70 transition-opacity px-4 py-2"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setLightboxIndex((prev) => (prev - 1 + hotelImages.length) % hotelImages.length);
+                  }}
+                >
+                  ‹
+                </button>
+
+                {/* Imagem ampliada */}
+                <div
+                  className="relative w-[90vw] h-[80vh] rounded-xl overflow-hidden"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <Image
+                    src={hotelImages[lightboxIndex].src}
+                    alt={hotelImages[lightboxIndex].alt}
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+
+                {/* Seta direita */}
+                <button
+                  className="absolute right-4 text-white text-4xl font-bold z-10 hover:opacity-70 transition-opacity px-4 py-2"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setLightboxIndex((prev) => (prev + 1) % hotelImages.length);
+                  }}
+                >
+                  ›
+                </button>
+
+                {/* Indicador de posição */}
+                <div className="absolute bottom-5 flex gap-2">
+                  {hotelImages.map((_, i) => (
+                    <span
+                      key={i}
+                      className="w-2 h-2 rounded-full"
+                      style={{ backgroundColor: i === lightboxIndex ? "#7ce75c" : "rgba(255,255,255,0.4)" }}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
 
             <div className="mt-8 flex flex-wrap gap-3">
               {[
