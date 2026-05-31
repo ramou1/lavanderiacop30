@@ -27,7 +27,7 @@ export function Header() {
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-brand-blue shadow-md">
+    <header className="sticky top-0 z-50 bg-brand-blue shadow-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
         <Logo priority />
 

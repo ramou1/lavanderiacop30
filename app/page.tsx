@@ -2,6 +2,7 @@
 
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { HeroSlider } from "@/components/HeroSlider";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
@@ -83,8 +84,8 @@ export default function Home() {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
   const hotelImages = [
-    { src: "/assets/images/hotel-grandsky_urbanova-principal.png", alt: "Fachada do Hotel Grandsky Urbanova" },
-    { src: "/assets/images/ambiente-lavanderia-urbanova-01.png", alt: "Área interna da lavanderia do cop30" },
+    { src: "/assets/images/hotel-grandsky-principal.jpeg", alt: "Fachada do Hotel Grandsky Urbanova" },
+    { src: "/assets/images/hotel-grandsky-1.jpeg", alt: "Área interna da lavanderia do cop30" },
   ];
 
   useEffect(() => {
@@ -132,36 +133,37 @@ export default function Home() {
       <main>
         <section
           id="inicio"
-          className="bg-brand-blue px-4 py-16 text-white sm:px-6 sm:py-24 lg:px-8 lg:py-28"
+          className="bg-brand-blue px-3 py-16 text-white sm:px-4 sm:py-20 lg:px-5 lg:py-32"
         >
-          <div className="mx-auto max-w-6xl">
-            <p className="text-sm font-semibold uppercase tracking-widest text-brand-lime">
-              Bem-vindo
-            </p>
-            <h1 className="mt-4 max-w-2xl text-3xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
-              Suas roupas limpas, com a qualidade da{" "}
-              <span className="text-brand-lime">{SITE_NAME}</span>
-            </h1>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg">
-              Lavagem, secagem e passadoria com agilidade e atendimento
-              próximo. Localizados no{" "}
-              <strong className="text-white">{CONTACT.location}</strong>, em
-              São José dos Campos.
-            </p>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <a
-                href="#contato"
-                className="inline-flex items-center justify-center rounded-lg bg-brand-lime px-6 py-3 text-sm font-semibold text-brand-blue transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-lime"
-              >
-                Fale conosco
-              </a>
-              <a
-                href="#servicos"
-                className="inline-flex items-center justify-center rounded-lg border border-white/30 px-6 py-3 text-sm font-semibold text-white transition-colors hover:border-brand-lime hover:text-brand-lime focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-lime"
-              >
-                Ver serviços
-              </a>
+          <div className="mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-2 lg:gap-10 lg:min-h-[28rem]">
+            <div>
+              <h1 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
+                Suas roupas limpas, com a qualidade da{" "}
+                <span className="text-brand-lime">{SITE_NAME}</span>
+              </h1>
+              <p className="mt-5 text-lg leading-relaxed text-white/85 sm:text-lg">
+                Lavagem, secagem e passadoria com agilidade e atendimento
+                próximo. Localizados no{" "}
+                <strong className="text-white">{CONTACT.location}</strong>, em
+                São José dos Campos.
+              </p>
+              <div className="mt-10 flex flex-wrap gap-4">
+                <a
+                  href="#contato"
+                  className="inline-flex items-center justify-center rounded-lg bg-brand-lime px-6 py-3 text-sm font-semibold text-brand-blue transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-lime"
+                >
+                  Fale conosco
+                </a>
+                <a
+                  href="#servicos"
+                  className="inline-flex items-center justify-center rounded-lg border border-white/30 px-6 py-3 text-sm font-semibold text-white transition-colors hover:border-brand-lime hover:text-brand-lime focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-lime"
+                >
+                  Ver serviços
+                </a>
+              </div>
             </div>
+
+            <HeroSlider />
           </div>
         </section>
 
