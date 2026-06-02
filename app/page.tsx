@@ -87,6 +87,23 @@ export default function Home() {
     { src: "/assets/images/hotel-grandsky-principal.jpeg", alt: "Fachada do Hotel Grandsky Urbanova" },
     { src: "/assets/images/hotel-grandsky-1.jpeg", alt: "Área interna da lavanderia do cop30" },
   ];
+  const machinesRef = useRef<HTMLDivElement | null>(null);
+  const [machinesVisible, setMachinesVisible] = useState(false);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setMachinesVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+  
+    if (machinesRef.current) observer.observe(machinesRef.current);
+  
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     if (isTouching) return;
@@ -255,7 +272,13 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="mt-10 rounded-xl border border-brand-blue/10 bg-white p-6 shadow-sm sm:p-8">
+            <div
+              ref={machinesRef}
+              className={`mt-10 rounded-xl border border-brand-blue/10 bg-white p-6 shadow-sm sm:p-8 transition-all duration-700 ${
+                machinesVisible
+                  ? "opacity-100 translate-x-0"
+                  : "opacity-0 translate-x-20"
+              }`}>
               <h3 className="text-xl font-semibold text-brand-blue">
                 Nossas máquinas
               </h3>
@@ -263,20 +286,97 @@ export default function Home() {
                 Contamos com 4 máquinas de lavagem para atender diferentes
                 volumes de roupa:
               </p>
-              <ul className="mt-6 grid gap-4 sm:grid-cols-3">
-                {MACHINES.map((machine) => (
+              <ul className="mt-6 grid gap-6 sm:grid-cols-3">
+                {[
+                  {
+                    size: "P",
+                    quantity: 2,
+                    kg: "10kg",
+                    price: "R$ 13,90",
+                    image: "/assets/images/lavadora-p.png",
+                    vantagens: [
+                      "Ideal para peças do dia a dia",
+                      "Até 10kg por ciclo",
+                      "Ciclo rápido e econômico",
+                      "2 unidades disponíveis",
+                    ],
+                  },
+                  {
+                    size: "G",
+                    quantity: 1,
+                    kg: "14kg",
+                    price: "R$ 23,90",
+                    image: "/assets/images/lavadora-g.png",
+                    vantagens: [
+                      "Para volumes maiores",
+                      "Até 14kg por ciclo",
+                      "Ótimo para roupas de cama",
+                      "Ciclo completo e eficiente",
+                    ],
+                  },
+                  {
+                    size: "GG",
+                    quantity: 1,
+                    kg: "22kg",
+                    price: "R$ 39,90",
+                    image: "/assets/images/lavadora-gg.png",
+                    highlight: true,
+                    vantagens: [
+                      "Única em São José dos Campos",
+                      "Até 22kg por ciclo",
+                      "Ideal para edredons e cobertores",
+                      "Máxima capacidade disponível",
+                    ],
+                  },
+                ].map((machine) => (
                   <li
                     key={machine.size}
-                    className="rounded-lg bg-brand-blue/5 px-4 py-5 text-center"
+                    className="flex flex-col rounded-2xl border border-brand-blue/10 bg-white shadow-sm overflow-hidden transition-transform duration-300 hover:-translate-y-2 hover:shadow-md"
                   >
-                    <p className="text-3xl font-bold text-brand-blue">
-                      {machine.quantity}x {machine.size}
-                    </p>
-                    {"highlight" in machine && machine.highlight && (
-                      <p className="mt-2 text-sm font-medium text-brand-blue">
-                        Máquina GG única em São José dos Campos
-                      </p>
-                    )}
+                    {/* Imagem */}
+                    <div className="relative h-72 w-full bg-brand-blue/5">
+                      <Image
+                        src={machine.image}
+                        alt={`Lavadora tamanho ${machine.size}`}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+
+                    {/* Conteúdo */}
+                    <div className="flex flex-col gap-4 p-5">
+
+                      {/* Título */}
+                      <div>
+                        <p className="text-xs font-semibold uppercase tracking-widest text-brand-blue/50">
+                          {machine.quantity > 1 ? `${machine.quantity} unidades` : "1 unidade"}
+                        </p>
+                        <h4 className="mt-1 text-2xl font-bold text-brand-blue">
+                          Tamanho {machine.size}
+                        </h4>
+                        <p className="mt-1 text-sm text-brand-blue/60">
+                          {machine.kg} · <span className="font-semibold text-brand-blue">{machine.price}</span>
+                        </p>
+                        {machine.highlight && (
+                          <span className="mt-2 inline-block rounded-full bg-brand-lime px-3 py-1 text-xs font-semibold text-brand-blue">
+                            Única em SJC
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Vantagens */}
+                      <ul className="flex flex-col gap-2">
+                        {machine.vantagens.map((v) => (
+                          <li
+                            key={v}
+                            className="rounded-lg bg-brand-blue/5 px-4 py-2 text-sm text-brand-blue/80"
+                          >
+                            {v}
+                          </li>
+                        ))}
+                      </ul>
+
+                    </div>
                   </li>
                 ))}
               </ul>
