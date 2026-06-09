@@ -5,7 +5,14 @@ import { Header } from "@/components/Header";
 import { HeroSlider } from "@/components/HeroSlider";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+  type ReactNode,
+  type RefObject,
+} from "react";
 import {
   CONTACT,
   MACHINES,
@@ -16,25 +23,88 @@ import {
 const SERVICES = [
   {
     title: "Lavagem",
+    icon: "🫧",
     description:
       "Roupas do dia a dia e peças delicadas com produtos de qualidade e cuidado no manuseio.",
   },
   {
     title: "Secagem",
+    icon: "💨",
     description:
       "Processo rápido e seguro para você retirar suas peças secas e prontas para usar.",
   },
   {
     title: "Passadoria",
+    icon: "👔",
     description:
       "Camisas, uniformes e roupas sociais passadas com acabamento impecável.",
   },
   {
     title: "Pacotes",
+    icon: "🏷️",
     description:
       "Planos mensais e pacotes por peso para quem precisa de praticidade e economia.",
   },
 ] as const;
+
+function RevealOnScroll({
+  as: Tag = "div",
+  className = "",
+  style,
+  children,
+}: {
+  as?: "div" | "li";
+  className?: string;
+  style?: CSSProperties;
+  children: ReactNode;
+}) {
+  const ref = useRef<HTMLDivElement | HTMLLIElement | null>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 },
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const animationClass = visible
+    ? "opacity-100 translate-y-0"
+    : "opacity-0 translate-y-6";
+
+  if (Tag === "li") {
+    return (
+      <li
+        ref={ref as RefObject<HTMLLIElement>}
+        style={style}
+        className={`transition-all duration-700 ${animationClass} ${className}`}
+      >
+        {children}
+      </li>
+    );
+  }
+
+  return (
+    <div
+      ref={ref as RefObject<HTMLDivElement>}
+      style={style}
+      className={`transition-all duration-700 ${animationClass} ${className}`}
+    >
+      {children}
+    </div>
+  );
+}
 
 export default function Home() {
   const reviews = [
@@ -200,18 +270,26 @@ export default function Home() {
             </div>
 
             <ul className="mt-12 grid gap-6 sm:grid-cols-2">
-              {SERVICES.map(({ title, description }) => (
-                <li
+              {SERVICES.map(({ title, icon, description }, index) => (
+                <RevealOnScroll
                   key={title}
-                  className="rounded-xl border border-brand-blue/10 bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
+                  as="li"
+                  style={{
+                    animationDelay: `${index * 150}ms`,
+                    transitionDelay: `${index * 150}ms`,
+                  }}
+                  className="flex flex-col rounded-xl border border-brand-blue/10 bg-white p-6 shadow-sm transition-all duration-300 hover:border-brand-lime hover:shadow-md"
                 >
-                  <h3 className="text-xl font-semibold text-brand-blue">
+                  <span className="text-3xl" aria-hidden="true">
+                    {icon}
+                  </span>
+                  <h3 className="mt-3 text-xl font-semibold text-brand-blue">
                     {title}
                   </h3>
-                  <p className="mt-3 leading-relaxed text-brand-blue/70">
+                  <p className="mt-3 flex-1 leading-relaxed text-brand-blue/70">
                     {description}
                   </p>
-                </li>
+                </RevealOnScroll>
               ))}
             </ul>
           </div>
@@ -234,8 +312,9 @@ export default function Home() {
 
             <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {PRODUCTS.map(({ name, brand }) => (
-                <li
+                <RevealOnScroll
                   key={name}
+                  as="li"
                   className="rounded-xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm"
                 >
                   <h3 className="text-xl font-semibold text-brand-lime">
@@ -244,7 +323,7 @@ export default function Home() {
                   <p className="mt-2 text-white/80">
                     Marca: <span className="font-medium text-white">{brand}</span>
                   </p>
-                </li>
+                </RevealOnScroll>
               ))}
             </ul>
           </div>
@@ -383,10 +462,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        <div className="h-2" style={{
-  background: "linear-gradient(to bottom, #f8fafc, #07176d)"
-      }} />
 
         <section
           id="hotel"
@@ -740,6 +815,66 @@ export default function Home() {
         </section>
 
         <section
+          id="localizacao"
+          className="scroll-mt-20 bg-background px-4 py-16 sm:px-6 sm:py-20 sm:pb-6 pb-2 lg:px-8"
+        >
+          <div className="mx-auto max-w-6xl">
+            <div className="max-w-2xl">
+              <p className="text-sm font-semibold uppercase tracking-widest text-brand-lime">
+                Onde estamos
+              </p>
+              <h2 className="mt-2 text-3xl font-bold text-brand-blue sm:text-4xl">
+                Saiba onde nos encontrar
+              </h2>
+              <p className="mt-4 text-lg text-brand-blue/75">
+                Estamos localizados em fácil acesso na região de Urbanova,
+                em São José dos Campos, SP.
+              </p>
+            </div>
+
+            <div className="mt-10 grid gap-8 lg:grid-cols-2 lg:items-start">
+
+              {/* Mapa */}
+              <RevealOnScroll className="overflow-hidden rounded-2xl shadow-sm ring-1 ring-brand-blue/10">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3667.5!2d-45.9341!3d-23.2203!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cc4bb3b4b4b4b4%3A0x5bdb0e0e0e0e0e0e!2sAv.%20Shishima%20Hifumi%2C%202828%20-%20Urbanova%2C%20S%C3%A3o%20Jos%C3%A9%20dos%20Campos%20-%20SP%2C%2012244-390!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
+                  width="100%"
+                  height="400"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Localização da Lavanderia COP 30"
+                />
+              </RevealOnScroll>
+
+              {/* Informações */}
+              <div className="flex flex-col gap-6">
+                <RevealOnScroll className="rounded-xl bg-white p-6 shadow-sm ring-1 ring-brand-blue/10">
+                  <h3 className="font-semibold text-brand-blue">Endereço</h3>
+                  <p className="mt-2 text-brand-blue/80">Av. Shishima Hifumi, 2828</p>
+                  <p className="text-brand-blue/80">Urbanova, São José dos Campos - SP</p>
+                  <p className="text-brand-blue/80">CEP: 12244-390</p>
+                  <p className="mt-2 text-sm text-brand-blue/60">
+                  {CONTACT.hours}
+                  </p>
+                </RevealOnScroll>
+
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Av.+Shishima+Hifumi,+2828+Urbanova+São+José+dos+Campos+SP"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex w-full items-center justify-center rounded-lg bg-brand-blue px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+                >
+                  Abrir no Google Maps ↗
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </section>
+       
+        <section
           id="contato"
           className="scroll-mt-20 px-4 py-16 sm:px-6 sm:py-20 lg:px-8"
         >
@@ -753,7 +888,7 @@ export default function Home() {
             </p>
 
             <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              <div className="rounded-xl bg-white p-6 shadow-sm ring-1 ring-brand-blue/10">
+              <RevealOnScroll className="rounded-xl bg-white p-6 shadow-sm ring-1 ring-brand-blue/10">
                 <h3 className="font-semibold text-brand-blue">Telefone</h3>
                 <a
                   href={`tel:${CONTACT.phone.replace(/\D/g, "")}`}
@@ -761,8 +896,8 @@ export default function Home() {
                 >
                   {CONTACT.phone}
                 </a>
-              </div>
-              <div className="rounded-xl bg-white p-6 shadow-sm ring-1 ring-brand-blue/10">
+              </RevealOnScroll>
+              <RevealOnScroll className="rounded-xl bg-white p-6 shadow-sm ring-1 ring-brand-blue/10">
                 <h3 className="font-semibold text-brand-blue">E-mail</h3>
                 <a
                   href={`mailto:${CONTACT.email}`}
@@ -770,14 +905,7 @@ export default function Home() {
                 >
                   {CONTACT.email}
                 </a>
-              </div>
-              <div className="rounded-xl bg-white p-6 shadow-sm ring-1 ring-brand-blue/10 sm:col-span-2 lg:col-span-1">
-                <h3 className="font-semibold text-brand-blue">Endereço</h3>
-                <p className="mt-2 text-brand-blue/80">{CONTACT.address}</p>
-                <p className="mt-2 text-sm text-brand-blue/60">
-                  {CONTACT.hours}
-                </p>
-              </div>
+              </RevealOnScroll>
             </div>
           </div>
         </section>
