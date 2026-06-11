@@ -15,7 +15,7 @@ export const NAV_LINKS = [
 ] as const;
 
 export const PRODUCTS = [
-  { name: "Desemassa", brand: "Comfort" },
+  { name: "Desamassa", brand: "Comfort" },
   { name: "Amaciante", brand: "Comfort" },
   { name: "Sabão Líquido", brand: "Omo" },
 ] as const;
@@ -29,7 +29,7 @@ export const MACHINES = [
 export const CONTACT = {
   phone: "(12) 98876-7170",
   email: "contato@lavanderiacop30.com.br",
-  address: "Grand Sky Hotel — São José dos Campos, SP",
-  location: "Grand Sky Hotel",
+  address: "Grand Sky Urbanova — São José dos Campos, SP",
+  location: "Grand Sky Urbanova",
   hours: "Segunda a sábado, 8h às 18h",
 } as const;

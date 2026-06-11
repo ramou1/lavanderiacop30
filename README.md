@@ -34,21 +34,27 @@ A página recarrega automaticamente ao editar os arquivos em `app/` e `component
 
 ## Scripts disponíveis
 
-| Comando        | Descrição                                      |
-| -------------- | ---------------------------------------------- |
-| `npm run dev`  | Servidor de desenvolvimento (hot reload)       |
-| `npm run build`| Gera a versão de produção                      |
-| `npm run start`| Executa a build de produção (após `build`)     |
-| `npm run lint` | Verifica o código com ESLint                   |
+| Comando         | Descrição                                |
+| --------------- | ---------------------------------------- |
+| `npm run dev`   | Servidor de desenvolvimento (hot reload) |
+| `npm run build` | Gera o site estático na pasta `out/`     |
+| `npm run lint`  | Verifica o código com ESLint             |
 
-## Build de produção
+## Build estático (FTP)
+
+O projeto está configurado com `output: "export"` no `next.config.ts`. Para gerar os arquivos de produção:
 
 ```bash
 npm run build
-npm run start
 ```
 
-O site ficará disponível em [http://localhost:3000](http://localhost:3000).
+A saída ficará em `out/`. Envie **todo o conteúdo** dessa pasta para a raiz do servidor FTP (ex.: `public_html/`).
+
+Para testar localmente a versão estática:
+
+```bash
+npx serve out
+```
 
 ## Estrutura do projeto
 
@@ -56,12 +62,16 @@ O site ficará disponível em [http://localhost:3000](http://localhost:3000).
 app/
   page.tsx          # Página única com todas as seções
   layout.tsx        # Layout raiz e metadata
+  favicon.ico       # Ícone do site
   globals.css       # Cores da marca e estilos globais
 components/
-  Header.tsx        # Menu âncora fixo
+  Header.tsx        # Cabeçalho fixo e responsivo
   Footer.tsx        # Rodapé
+  HeroSlider.tsx    # Slider da seção inicial
 lib/
   constants.ts      # Nome do site, navegação e contato
+public/
+  assets/           # Imagens e fontes
 ```
 
 ## Personalização

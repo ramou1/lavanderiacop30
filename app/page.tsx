@@ -15,7 +15,6 @@ import {
 } from "react";
 import {
   Package,
-  Shirt,
   WashingMachine,
   Wind,
   type LucideIcon,
@@ -44,12 +43,6 @@ const SERVICES: {
     icon: Wind,
     description:
       "Processo rápido e seguro para você retirar suas peças secas e prontas para usar.",
-  },
-  {
-    title: "Passadoria",
-    icon: Shirt,
-    description:
-      "Camisas, uniformes e roupas sociais passadas com acabamento impecável.",
   },
   {
     title: "Pacotes",
@@ -281,7 +274,7 @@ export default function Home() {
               </p>
             </div>
 
-            <ul className="mt-12 grid gap-6 sm:grid-cols-2">
+            <ul className="mt-12 grid gap-6 lg:grid-cols-3">
               {SERVICES.map(({ title, icon: Icon, description }, index) => (
                 <RevealOnScroll
                   key={title}
