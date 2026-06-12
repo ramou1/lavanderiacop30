@@ -1,10 +1,17 @@
 export const SITE_NAME = "Lavanderia COP 30";
 
+export const SITE_URL = "https://lavanderiacop30.com.br";
+
 export const LOGO_SRC = "/assets/images/logo01.png";
 
 export const INSTAGRAM_URL = "https://www.instagram.com/cop30lavanderia/";
 
 export const WHATSAPP_NUMBER = "5512988767170";
+
+export const DEVELOPER = {
+  name: "Ramon Oliveira",
+  url: "https://www.linkedin.com/in/ramou1/",
+} as const;
 
 export const NAV_LINKS = [
   { href: "#inicio", label: "Início" },
@@ -31,5 +38,10 @@ export const CONTACT = {
   email: "contato@lavanderiacop30.com.br",
   address: "Grand Sky Urbanova — São José dos Campos, SP",
   location: "Grand Sky Urbanova",
+  street: "Av. Shishima Hifumi, 2828",
+  city: "São José dos Campos",
+  state: "SP",
+  zip: "12244-390",
+  country: "BR",
   hours: "Segunda a sábado, 8h às 18h",
 } as const;

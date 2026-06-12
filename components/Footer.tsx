@@ -1,6 +1,6 @@
 import { InstagramIcon } from "@/components/InstagramIcon";
 import { Logo } from "@/components/Logo";
-import { CONTACT, NAV_LINKS, SITE_NAME } from "@/lib/constants";
+import { CONTACT, DEVELOPER, NAV_LINKS, SITE_NAME } from "@/lib/constants";
 
 const currentYear = new Date().getFullYear();
 
@@ -61,6 +61,17 @@ export function Footer() {
         <div className="mt-10 border-t border-white/10 pt-6 text-center text-sm">
           <p>
             © {currentYear} {SITE_NAME}. Todos os direitos reservados.
+          </p>
+          <p className="mt-2 text-white/50">
+            Desenvolvido por{" "}
+            <a
+              href={DEVELOPER.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/70 transition-colors hover:text-brand-lime"
+            >
+              {DEVELOPER.name}
+            </a>
           </p>
         </div>
       </div>
