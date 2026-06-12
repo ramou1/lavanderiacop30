@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
+import { JsonLd } from "@/components/JsonLd";
+import { siteMetadata } from "@/lib/seo";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -7,11 +9,7 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Lavanderia COP 30 | Lavagem e passadoria",
-  description:
-    "Lavanderia COP 30 — lavagem, secagem e passadoria com qualidade e agilidade. Conheça nossos serviços e entre em contato.",
-};
+export const metadata: Metadata = siteMetadata;
 
 export default function RootLayout({
   children,
@@ -20,7 +18,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className={`${geistSans.variable} h-full antialiased`}>
-      <body className="flex min-h-full flex-col">{children}</body>
+      <body className="flex min-h-full flex-col">
+        <JsonLd />
+        {children}
+      </body>
     </html>
   );
 }

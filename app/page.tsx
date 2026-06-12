@@ -229,12 +229,11 @@ export default function Home() {
         >
           <div className="mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-2 lg:gap-10 lg:min-h-[28rem]">
             <div>
-              <h1 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
-                Suas roupas limpas, com a qualidade da{" "}
-                <span className="text-brand-lime">{SITE_NAME}</span>
+              <h1 className="text-2xl font-bold leading-tight tracking-tight sm:text-3xl lg:text-4xl">
+                Suas roupas sempre limpas, com a qualidade de uma lavanderia profissional, aqui na <span className="text-brand-lime">COP 30</span>
               </h1>
               <p className="mt-5 text-lg leading-relaxed text-white/85 sm:text-lg">
-                Lavagem, secagem e passadoria com agilidade e atendimento
+                Lavagem e secagem com agilidade e atendimento
                 próximo. Localizados no{" "}
                 <strong className="text-white">{CONTACT.location}</strong>, em
                 São José dos Campos.
@@ -888,9 +887,11 @@ export default function Home() {
               </RevealOnScroll>
               <RevealOnScroll className="rounded-xl bg-white p-6 shadow-sm ring-1 ring-brand-blue/10 sm:col-span-2 lg:col-span-1">
                 <h3 className="font-semibold text-brand-blue">Endereço</h3>
-                <p className="mt-2 text-brand-blue/80">Av. Shishima Hifumi, 2828</p>
-                <p className="text-brand-blue/80">Urbanova, São José dos Campos - SP</p>
-                <p className="text-brand-blue/80">CEP: 12244-390</p>
+                <p className="mt-2 text-brand-blue/80">{CONTACT.street}</p>
+                <p className="text-brand-blue/80">
+                  Urbanova, {CONTACT.city} - {CONTACT.state}
+                </p>
+                <p className="text-brand-blue/80">CEP: {CONTACT.zip}</p>
                 <p className="mt-2 text-sm text-brand-blue/60">{CONTACT.hours}</p>
               </RevealOnScroll>
             </div>
