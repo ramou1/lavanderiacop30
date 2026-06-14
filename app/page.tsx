@@ -601,10 +601,8 @@ export default function Home() {
 
             <div className="mt-8 flex flex-wrap gap-3">
               {[
-                "Academia",
                 "Estacionamento",
                 "Wi-Fi",
-                "Lavanderia",
                 "Ar-condicionado",
               ].map((item) => (
                 <span
@@ -823,16 +821,15 @@ export default function Home() {
           className="scroll-mt-20 bg-background px-4 py-16 sm:px-6 sm:py-20 sm:pb-6 pb-2 lg:px-8"
         >
           <div className="mx-auto max-w-6xl">
-            <div className="max-w-2xl">
+            <div className="w-full">
               <p className="text-sm font-semibold uppercase tracking-widest text-brand-lime">
                 Onde estamos
               </p>
               <h2 className="mt-2 text-3xl font-bold text-brand-blue sm:text-4xl">
                 Saiba onde nos encontrar
               </h2>
-              <p className="mt-4 text-lg text-brand-blue/75">
-                Estamos localizados em fácil acesso na região de Urbanova,
-                em São José dos Campos, SP.
+              <p className="mt-4 w-full text-lg text-brand-blue/75">
+                Estamos localizados em fácil acesso na região de Urbanova, em São José dos Campos, SP.
               </p>
             </div>
 

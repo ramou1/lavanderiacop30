@@ -43,5 +43,5 @@ export const CONTACT = {
   state: "SP",
   zip: "12244-390",
   country: "BR",
-  hours: "Segunda a sábado, 8h às 18h",
+  hours: "Todos os dias das 6h às 22h",
 } as const;

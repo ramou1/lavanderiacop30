@@ -1,5 +1,6 @@
 import { InstagramIcon } from "@/components/InstagramIcon";
 import { Logo } from "@/components/Logo";
+import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { CONTACT, DEVELOPER, NAV_LINKS, SITE_NAME } from "@/lib/constants";
 
 const currentYear = new Date().getFullYear();
@@ -15,8 +16,9 @@ export function Footer() {
               Lavanderia de confiança no {CONTACT.location}. Roupas limpas,
               secas e prontas para o seu dia a dia.
             </p>
-            <div className="mt-4">
+            <div className="mt-4 flex items-center gap-1">
               <InstagramIcon />
+              <WhatsAppIcon />
             </div>
           </div>
 
@@ -43,7 +45,14 @@ export function Footer() {
               Contato
             </h2>
             <ul className="mt-4 space-y-2 text-sm">
-              <li>{CONTACT.phone}</li>
+              <li>
+                <a
+                  href={`tel:${CONTACT.phone.replace(/\D/g, "")}`}
+                  className="transition-colors hover:text-brand-lime"
+                >
+                  {CONTACT.phone}
+                </a>
+              </li>
               <li>
                 <a
                   href={`mailto:${CONTACT.email}`}
