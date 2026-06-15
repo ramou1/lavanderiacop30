@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import { JsonLd } from "@/components/JsonLd";
+import { PageLoader } from "@/components/PageLoader";
 import { siteMetadata } from "@/lib/seo";
 import "./globals.css";
 
@@ -19,6 +20,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={`${geistSans.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
+        <PageLoader />
         <JsonLd />
         {children}
       </body>
