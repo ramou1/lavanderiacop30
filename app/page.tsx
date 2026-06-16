@@ -14,7 +14,6 @@ import {
   type RefObject,
 } from "react";
 import {
-  Package,
   WashingMachine,
   Wind,
   type LucideIcon,
@@ -43,13 +42,7 @@ const SERVICES: {
     icon: Wind,
     description:
       "Processo rápido e seguro para você retirar suas peças secas e prontas para usar.",
-  },
-  {
-    title: "Pacotes",
-    icon: Package,
-    description:
-      "Planos mensais e pacotes por peso para quem precisa de praticidade e economia.",
-  },
+  }
 ];
 
 function RevealOnScroll({
@@ -273,7 +266,7 @@ export default function Home() {
               </p>
             </div>
 
-            <ul className="mt-12 grid gap-6 lg:grid-cols-3">
+            <ul className="mt-12 grid gap-6 lg:grid-cols-2">
               {SERVICES.map(({ title, icon: Icon, description }, index) => (
                 <RevealOnScroll
                   key={title}
@@ -345,13 +338,11 @@ export default function Home() {
               <p>
                 A {SITE_NAME} nasceu para oferecer um serviço de lavanderia
                 acessível, confiável e com atendimento humano. Trabalhamos com
-                equipamentos modernos e equipe treinada para cuidar das suas
-                peças como se fossem nossas.
+                equipamentos modernos para cuidar das suas peças como se fossem nossas.
               </p>
               <p>
                 Estamos localizados no <strong>{CONTACT.location}</strong>, em
-                São José dos Campos, com prazos combinados e transparência no
-                orçamento. Sua satisfação é o que nos move todos os dias.
+                São José dos Campos. Sua satisfação é o que nos move todos os dias.
               </p>
             </div>
 
@@ -394,6 +385,7 @@ export default function Home() {
                       "Para volumes maiores",
                       "Até 14kg por ciclo",
                       "Ótimo para roupas de cama",
+                      "Ideal para edredons e cobertores de casal",
                       "Ciclo completo e eficiente",
                     ],
                   },
@@ -407,7 +399,7 @@ export default function Home() {
                     vantagens: [
                       "Única em São José dos Campos",
                       "Até 22kg por ciclo",
-                      "Ideal para edredons e cobertores",
+                      "Ideal para eedredons e cobertores king",
                       "Máxima capacidade disponível",
                     ],
                   },
@@ -473,41 +465,42 @@ export default function Home() {
           style={{ backgroundColor: "var(--foreground)" }}
         >
           <div className="mx-auto max-w-6xl">
-            <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
-              <div>
-                <p
-                  className="text-sm font-semibold uppercase tracking-[0.2em]"
-                  style={{ color: "#7ce75c", fontFamily: "var(--font-body)" }}
-                >
-                  HOSPEDAGEM
-                </p>
-                <h2
-                  className="mt-4 text-3xl font-bold sm:text-4xl"
-                  style={{ color: "#ffffff", fontFamily: "var(--font-title)" }}
-                >
-                  Hotel Grandsky Urbanova
-                </h2>
-                <div
-                  className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm sm:text-base"
-                  style={{ fontFamily: "var(--font-body)" }}
-                >
-                  <span className="font-semibold" style={{ color: "#ffffff" }}>
-                    4,7
-                  </span>
-                  <span className="tracking-wide text-amber-400">★★★★★</span>
-                  <span style={{ color: "rgba(255,255,255,0.75)" }}>
-                    18 avaliações no Google
-                  </span>
-                </div>
-              </div>
-
+            <div className="max-w-full">
               <p
-                className="text-base leading-relaxed sm:text-lg"
-                style={{ color: "#ffffff", fontFamily: "var(--font-body)" }}
+                className="text-sm font-semibold uppercase tracking-[0.2em]"
+                style={{ color: "#7ce75c", fontFamily: "var(--font-body)" }}
               >
-                A lavanderia fica no térreo do próprio hotel, mesma estrutura. Hóspedes deixam as roupas na
-                portaria e retiram prontas, sem precisar sair do prédio.
-                Comodidade total para quem está hospedado no Grandsky Urbanova.
+                HOSPEDAGEM
+              </p>
+              <h2
+                className="mt-4 text-3xl font-bold sm:text-4xl"
+                style={{ color: "#ffffff", fontFamily: "var(--font-title)" }}
+              >
+                Hotel Grandsky Urbanova
+              </h2>
+              <div
+                className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm sm:text-base"
+                style={{ fontFamily: "var(--font-body)" }}
+              >
+                <span className="font-semibold" style={{ color: "#ffffff" }}>
+                  4,7
+                </span>
+                <span className="tracking-wide text-amber-400">★★★★★</span>
+                <span style={{ color: "rgba(255,255,255,0.75)" }}>
+                  18 avaliações no Google
+                </span>
+              </div>
+              <p
+                className="mt-4 text-base leading-relaxed sm:text-lg"
+                style={{ color: "rgba(255,255,255,0.85)", fontFamily: "var(--font-body)" }}
+              >
+                A lavanderia está localizada no térreo do Hotel Grand Sky Urbanova,
+                compartilhando a mesma estrutura e proporcionando máxima comodidade
+                aos hóspedes. Basta sair do prédio e, em poucos passos, chegar à
+                lavanderia para deixar suas roupas e retirá-las prontas posteriormente.
+                A proximidade garante um acesso rápido e confortável, permitindo que os
+                hóspedes contem com um serviço profissional de lavanderia sem a
+                necessidade de grandes deslocamentos durante sua estadia.
               </p>
             </div>
 
