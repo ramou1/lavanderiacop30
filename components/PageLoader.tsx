@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 const HIDE_DELAY_MS = 350;
-const MAX_VISIBLE_MS = 5000;
+const MAX_VISIBLE_MS = 3000;
 
 export function PageLoader() {
   const [visible, setVisible] = useState(true);
