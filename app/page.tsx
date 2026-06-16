@@ -334,16 +334,32 @@ export default function Home() {
             <h2 className="text-3xl font-bold text-brand-blue sm:text-4xl">
               Sobre nós
             </h2>
-            <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-brand-blue/80 sm:text-lg">
-              <p>
-                A {SITE_NAME} nasceu para oferecer um serviço de lavanderia
-                acessível, confiável e com atendimento humano. Trabalhamos com
-                equipamentos modernos para cuidar das suas peças como se fossem nossas.
-              </p>
-              <p>
-                Estamos localizados no <strong>{CONTACT.location}</strong>, em
-                São José dos Campos. Sua satisfação é o que nos move todos os dias.
-              </p>
+            <div className="mt-6 w-full rounded-xl border border-brand-blue/10 bg-white p-6 shadow-sm sm:p-8">
+              <div className="space-y-4 text-base leading-relaxed text-brand-blue/80 sm:text-lg">
+                <p>
+                  A Lavanderia COP 30 nasceu para oferecer uma solução prática,
+                  acessível e confiável para quem valoriza autonomia, comodidade
+                  e eficiência no cuidado com suas roupas. Aqui, você mesmo
+                  realiza a lavagem e secagem das suas peças, utilizando
+                  equipamentos modernos, de alta performance e fáceis de usar,
+                  garantindo excelentes resultados em cada ciclo.
+                </p>
+                <p>
+                  Localizada ao lado do Hotel Grand Sky Urbanova, em São José
+                  dos Campos, a Lavanderia COP 30 foi pensada para proporcionar
+                  uma experiência diferenciada, tanto para hóspedes quanto para
+                  moradores da região. Contamos com um ambiente moderno, seguro,
+                  aconchegante, climatizado e cuidadosamente projetado para ser
+                  agradável e instagramável, tornando o tempo de espera mais
+                  confortável e agradável.
+                </p>
+                <p>
+                  Nosso compromisso é oferecer muito mais do que uma lavanderia:
+                  queremos proporcionar praticidade, transparência e uma excelente
+                  experiência, para que você tenha suas roupas sempre limpas com
+                  a qualidade e a conveniência que o seu dia a dia merece.
+                </p>
+              </div>
             </div>
 
             <div
@@ -851,9 +867,8 @@ export default function Home() {
             <h2 className="text-3xl font-bold text-brand-blue sm:text-4xl">
               Contato
             </h2>
-            <p className="mt-4 max-w-xl text-lg text-brand-blue/75">
-              Tire dúvidas, peça um orçamento ou combine a retirada das suas
-              roupas. Estamos prontos para atender você.
+            <p className="mt-4 w-full text-lg text-brand-blue/75">
+              Tire suas dúvidas. Estamos prontos para atender você.
             </p>
 
             <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">

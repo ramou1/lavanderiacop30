@@ -1,6 +1,32 @@
 # Lavanderia COP 30
 
-Site de página única da **Lavanderia COP 30**, desenvolvido com [Next.js](https://nextjs.org) e [Tailwind CSS](https://tailwindcss.com).
+Site institucional de página única da **Lavanderia COP 30**, lavanderia self-service localizada ao lado do **Grand Sky Urbanova**, em São José dos Campos — SP.
+
+Desenvolvido com [Next.js](https://nextjs.org) e [Tailwind CSS](https://tailwindcss.com), com export estático para publicação em hospedagem FTP.
+
+## Sobre o projeto
+
+O site apresenta os serviços, produtos utilizados, máquinas disponíveis (P, G e GG), localização com mapa integrado, seção do hotel parceiro e canais de contato. Inclui:
+
+- Layout responsivo com menu fixo e versão mobile
+- Slider de fotos na seção inicial
+- Ícones de serviços com [Lucide](https://lucide.dev)
+- Botão flutuante de WhatsApp e link para Instagram
+- Loader na abertura do site
+- SEO com metadata, Open Graph, `sitemap.xml`, `robots.txt` e dados estruturados (Schema.org)
+- Identidade visual com cores da marca, fontes **Axiforma** e **Inter**
+
+## Seções do site
+
+| Seção | Conteúdo |
+| ----- | -------- |
+| Início | Apresentação, slider do ambiente e CTAs |
+| Serviços | Lavagem, secagem e pacotes |
+| Produtos | Desamassa, amaciante e sabão líquido |
+| Sobre nós | História da lavanderia e cards das máquinas |
+| Hotel | Informações do Grand Sky Urbanova |
+| Localização | Mapa do Google Maps |
+| Contato | Telefone, e-mail e endereço |
 
 ## Pré-requisitos
 
@@ -30,8 +56,6 @@ npm run dev
 
 4. Abra [http://localhost:3000](http://localhost:3000) no navegador.
 
-A página recarrega automaticamente ao editar os arquivos em `app/` e `components/`.
-
 ## Scripts disponíveis
 
 | Comando         | Descrição                                |
@@ -42,7 +66,7 @@ A página recarrega automaticamente ao editar os arquivos em `app/` e `component
 
 ## Build estático (FTP)
 
-O projeto está configurado com `output: "export"` no `next.config.ts`. Para gerar os arquivos de produção:
+O projeto usa `output: "export"` no `next.config.ts`. Para gerar os arquivos de produção:
 
 ```bash
 npm run build
@@ -60,24 +84,34 @@ npx serve out
 
 ```
 app/
-  page.tsx          # Página única com todas as seções
-  layout.tsx        # Layout raiz e metadata
-  favicon.ico       # Ícone do site
-  globals.css       # Cores da marca e estilos globais
+  page.tsx              # Página única com todas as seções
+  layout.tsx            # Layout raiz, metadata e SEO
+  opengraph-image.png   # Imagem de compartilhamento (redes sociais)
+  favicon.ico           # Ícone do site
+  sitemap.ts            # Gera sitemap.xml
+  robots.ts             # Gera robots.txt
+  globals.css           # Cores da marca e estilos globais
 components/
-  Header.tsx        # Cabeçalho fixo e responsivo
-  Footer.tsx        # Rodapé
-  HeroSlider.tsx    # Slider da seção inicial
+  Header.tsx            # Cabeçalho fixo e responsivo
+  Footer.tsx            # Rodapé
+  HeroSlider.tsx        # Slider da seção inicial
+  PageLoader.tsx        # Loader de abertura
+  JsonLd.tsx            # Dados estruturados para buscadores
 lib/
-  constants.ts      # Nome do site, navegação e contato
+  constants.ts          # Dados do site, navegação e contato
+  seo.ts                # Configurações de SEO
 public/
-  assets/           # Imagens e fontes
+  assets/               # Imagens e fontes
 ```
 
 ## Personalização
 
-Edite `lib/constants.ts` para atualizar telefone, e-mail, endereço e horário de funcionamento.
+Edite `lib/constants.ts` para atualizar telefone, e-mail, endereço, horário e URL do site (`SITE_URL`).
 
 ## Repositório
 
 [github.com/ramou1/lavanderiacop30](https://github.com/ramou1/lavanderiacop30)
+
+## Desenvolvedor
+
+[Ramon Oliveira](https://www.linkedin.com/in/ramou1/) — [@ramou1](https://github.com/ramou1)
