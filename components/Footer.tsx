@@ -1,3 +1,4 @@
+import { BrandPattern } from "@/components/BrandPattern";
 import { InstagramIcon } from "@/components/InstagramIcon";
 import { Logo } from "@/components/Logo";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
@@ -7,8 +8,9 @@ const currentYear = new Date().getFullYear();
 
 export function Footer() {
   return (
-    <footer className="bg-brand-blue text-white/80">
-      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+    <footer className="relative overflow-hidden bg-brand-blue text-white/80">
+      <BrandPattern />
+      <div className="relative z-10 mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           <div>
             <Logo />

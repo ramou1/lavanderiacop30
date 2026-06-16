@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { CONTACT, INSTAGRAM_URL, SITE_NAME, SITE_URL } from "@/lib/constants";
 
+export const SITE_TITLE = `${SITE_NAME} | Grand Sky Urbanova - Lavagem e secagem`;
+
 export const SITE_DESCRIPTION =
   "Lavanderia COP 30 — lavagem e secagem com qualidade e agilidade no Grand Sky Urbanova, São José dos Campos. Máquinas M, G e GG, incluindo a única GG da cidade.";
 
@@ -19,7 +21,7 @@ export const SITE_KEYWORDS = [
 export const siteMetadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} | Lavagem e secagem`,
+    default: SITE_TITLE,
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
@@ -40,12 +42,12 @@ export const siteMetadata: Metadata = {
     locale: "pt_BR",
     url: SITE_URL,
     siteName: SITE_NAME,
-    title: `${SITE_NAME} | Lavagem e secagem`,
+    title: SITE_TITLE,
     description: SITE_DESCRIPTION,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE_NAME} | Lavagem e secagem`,
+    title: SITE_TITLE,
     description: SITE_DESCRIPTION,
   },
   robots: {

@@ -1,5 +1,6 @@
 "use client";
 
+import { BrandPattern } from "@/components/BrandPattern";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { HeroSlider } from "@/components/HeroSlider";
@@ -218,9 +219,10 @@ export default function Home() {
       <main>
         <section
           id="inicio"
-          className="bg-brand-blue px-3 pb-16 pt-24 text-white sm:px-4 sm:pb-20 sm:pt-28 lg:px-5 lg:pb-32 lg:pt-32"
+          className="relative overflow-hidden bg-brand-blue px-3 pb-28 pt-24 text-white sm:px-4 sm:pb-32 sm:pt-28 lg:px-5 lg:pb-32 lg:pt-32"
         >
-          <div className="mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-2 lg:gap-10 lg:min-h-[28rem]">
+          <BrandPattern />
+          <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-2 lg:gap-10 lg:min-h-[28rem]">
             <div>
               <h1 className="text-2xl font-bold leading-tight tracking-tight sm:text-3xl lg:text-4xl">
                 Suas roupas sempre limpas, com a qualidade de uma lavanderia profissional, aqui na <span className="text-brand-lime">COP 30</span>
@@ -249,6 +251,15 @@ export default function Home() {
 
             <HeroSlider />
           </div>
+
+          <Image
+            src="/assets/images/personagem-cop30.png"
+            alt="Mascote da Lavanderia COP 30"
+            width={320}
+            height={360}
+            priority
+            className="pointer-events-none absolute bottom-0 left-1/2 z-20 h-auto w-40 -translate-x-1/2 sm:bottom-2 sm:w-48 md:w-52 lg:bottom-16 lg:left-[46%] lg:w-60 xl:bottom-20 xl:w-64"
+          />
         </section>
 
         <section
@@ -294,9 +305,10 @@ export default function Home() {
 
         <section
           id="produtos"
-          className="scroll-mt-20 bg-brand-blue px-4 py-16 text-white sm:px-6 sm:py-20 lg:px-8"
+          className="relative overflow-hidden scroll-mt-20 bg-brand-blue px-4 py-16 text-white sm:px-6 sm:py-20 lg:px-8"
         >
-          <div className="mx-auto max-w-6xl">
+          <BrandPattern />
+          <div className="relative z-10 mx-auto max-w-6xl">
             <div className="max-w-2xl">
               <h2 className="text-3xl font-bold text-brand-lime sm:text-4xl">
                 Produtos
@@ -334,8 +346,8 @@ export default function Home() {
             <h2 className="text-3xl font-bold text-brand-blue sm:text-4xl">
               Sobre nós
             </h2>
-            <div className="mt-6 w-full rounded-xl border border-brand-blue/10 bg-white p-6 shadow-sm sm:p-8">
-              <div className="space-y-4 text-base leading-relaxed text-brand-blue/80 sm:text-lg">
+            <div className="mt-6 grid gap-8 lg:grid-cols-3 lg:items-center">
+              <div className="space-y-4 text-base leading-relaxed text-brand-blue/80 sm:text-lg lg:col-span-2">
                 <p>
                   A Lavanderia COP 30 nasceu para oferecer uma solução prática,
                   acessível e confiável para quem valoriza autonomia, comodidade
@@ -359,6 +371,16 @@ export default function Home() {
                   experiência, para que você tenha suas roupas sempre limpas com
                   a qualidade e a conveniência que o seu dia a dia merece.
                 </p>
+              </div>
+
+              <div className="flex justify-center lg:col-span-1 lg:justify-end">
+                <Image
+                  src="/assets/images/personagem-cop30.png"
+                  alt="Mascote da Lavanderia COP 30"
+                  width={320}
+                  height={360}
+                  className="h-auto w-48 sm:w-56 lg:w-full lg:max-w-[220px] xl:max-w-[260px]"
+                />
               </div>
             </div>
 
