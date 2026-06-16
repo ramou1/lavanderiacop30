@@ -437,7 +437,7 @@ export default function Home() {
                     vantagens: [
                       "Única em São José dos Campos",
                       "Até 22kg por ciclo",
-                      "Ideal para eedredons e cobertores king",
+                      "Ideal para edredons e cobertores king",
                       "Máxima capacidade disponível",
                     ],
                   },
