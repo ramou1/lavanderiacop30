@@ -154,7 +154,7 @@ export default function Home() {
   const [lightboxIndex, setLightboxIndex] = useState(0);
   const hotelImages = [
     { src: "/assets/images/hotel-grandsky-principal.jpeg", alt: "Fachada do Hotel Grandsky Urbanova" },
-    { src: "/assets/images/hotel-grandsky-1.jpeg", alt: "Área interna da lavanderia do cop30" },
+    { src: "/assets/images/hotel-grandsky-interno.jpeg", alt: "Área interna da lavanderia do cop30" },
   ];
   const machinesRef = useRef<HTMLDivElement | null>(null);
   const [machinesVisible, setMachinesVisible] = useState(false);
