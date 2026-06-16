@@ -1,22 +1,46 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
+const HIDE_DELAY_MS = 350;
+const MAX_VISIBLE_MS = 5000;
 
 export function PageLoader() {
   const [visible, setVisible] = useState(true);
   const [fadeOut, setFadeOut] = useState(false);
+  const hiddenRef = useRef(false);
 
   useEffect(() => {
-    const hide = () => setFadeOut(true);
+    let hideSoonTimer: ReturnType<typeof setTimeout> | null = null;
 
-    if (document.readyState === "complete") {
-      const timer = setTimeout(hide, 350);
-      return () => clearTimeout(timer);
+    const hide = () => {
+      if (hiddenRef.current) return;
+      hiddenRef.current = true;
+      setFadeOut(true);
+    };
+
+    const hideSoon = () => {
+      hideSoonTimer = setTimeout(hide, HIDE_DELAY_MS);
+    };
+
+    if (
+      document.readyState === "complete" ||
+      document.readyState === "interactive"
+    ) {
+      hideSoon();
+    } else {
+      window.addEventListener("load", hideSoon, { once: true });
+      document.addEventListener("DOMContentLoaded", hideSoon, { once: true });
     }
 
-    const onLoad = () => setTimeout(hide, 350);
-    window.addEventListener("load", onLoad);
-    return () => window.removeEventListener("load", onLoad);
+    const maxTimer = setTimeout(hide, MAX_VISIBLE_MS);
+
+    return () => {
+      if (hideSoonTimer) clearTimeout(hideSoonTimer);
+      clearTimeout(maxTimer);
+      window.removeEventListener("load", hideSoon);
+      document.removeEventListener("DOMContentLoaded", hideSoon);
+    };
   }, []);
 
   useEffect(() => {
