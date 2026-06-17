@@ -398,7 +398,7 @@ export default function Home() {
                 Contamos com 4 máquinas de lavagem para atender diferentes
                 volumes de roupa:
               </p>
-              <p className="mt-2 text-sm font-medium text-brand-lime">
+              <p className="mt-2 text-sm font-medium text-brand-blue/75">
                 Valores promocionais por ciclo de lavagem.
               </p>
               <ul className="mt-6 grid gap-6 sm:grid-cols-3">
@@ -470,17 +470,19 @@ export default function Home() {
                         <h4 className="mt-1 text-2xl font-bold text-brand-blue">
                           Tamanho {machine.size}
                         </h4>
-                        <p className="mt-1 text-sm text-brand-blue/60">
+                        <p className="mt-1 text-base font-medium text-brand-blue/70">
                           {machine.kg}
                         </p>
-                        <div className="mt-3">
-                          <p className="text-xs font-semibold uppercase tracking-wide text-brand-lime">
+                        <div className="mt-2">
+                          <p className="text-xs font-semibold uppercase text-brand-lime">
                             Valor promocional
                           </p>
-                          <p className="mt-0.5 text-2xl font-bold text-brand-lime">
-                            {machine.price}
+                          <p className="text-3xl font-bold leading-tight text-brand-blue">
+                            {machine.price}{" "}
+                            <span className="text-sm font-medium text-brand-blue/60">
+                              por ciclo
+                            </span>
                           </p>
-                          <p className="text-xs text-brand-blue/50">por ciclo</p>
                         </div>
                         {machine.highlight && (
                           <span className="mt-2 inline-block rounded-full bg-brand-lime px-3 py-1 text-xs font-semibold text-brand-blue">
