@@ -15,9 +15,9 @@ export const DEVELOPER = {
 
 export const NAV_LINKS = [
   { href: "#inicio", label: "Início" },
-  { href: "#servicos", label: "Serviços" },
-  { href: "#produtos", label: "Produtos" },
   { href: "#sobre", label: "Sobre" },
+  { href: "#produtos", label: "Produtos" },
+  { href: "#servicos", label: "Serviços" },
   { href: "#contato", label: "Contato" },
 ] as const;
 
