@@ -263,82 +263,6 @@ export default function Home() {
         </section>
 
         <section
-          id="servicos"
-          className="scroll-mt-20 bg-background px-4 py-16 sm:px-6 sm:py-20 lg:px-8"
-        >
-          <div className="mx-auto max-w-6xl">
-            <div className="max-w-2xl">
-              <h2 className="text-3xl font-bold text-brand-blue sm:text-4xl">
-                Nossos serviços
-              </h2>
-              <p className="mt-4 text-lg text-brand-blue/75">
-                Tudo o que você precisa para manter o guarda-roupa em dia, em
-                um só lugar.
-              </p>
-            </div>
-
-            <ul className="mt-12 grid gap-6 lg:grid-cols-2">
-              {SERVICES.map(({ title, icon: Icon, description }, index) => (
-                <RevealOnScroll
-                  key={title}
-                  as="li"
-                  style={{
-                    animationDelay: `${index * 150}ms`,
-                    transitionDelay: `${index * 150}ms`,
-                  }}
-                  className="flex flex-col rounded-xl border border-brand-blue/10 bg-white p-6 shadow-sm transition-all duration-300 hover:border-brand-lime hover:shadow-md"
-                >
-                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-brand-blue/5 text-brand-blue">
-                    <Icon className="h-6 w-6" aria-hidden="true" />
-                  </span>
-                  <h3 className="mt-3 text-xl font-semibold text-brand-blue">
-                    {title}
-                  </h3>
-                  <p className="mt-3 flex-1 leading-relaxed text-brand-blue/70">
-                    {description}
-                  </p>
-                </RevealOnScroll>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        <section
-          id="produtos"
-          className="relative overflow-hidden scroll-mt-20 bg-brand-blue px-4 py-16 text-white sm:px-6 sm:py-20 lg:px-8"
-        >
-          <BrandPattern />
-          <div className="relative z-10 mx-auto max-w-6xl">
-            <div className="max-w-2xl">
-              <h2 className="text-3xl font-bold text-brand-lime sm:text-4xl">
-                Produtos
-              </h2>
-              <p className="mt-4 text-lg text-white/85">
-                Utilizamos marcas reconhecidas para garantir limpeza, cuidado
-                e perfume duradouro nas suas roupas.
-              </p>
-            </div>
-
-            <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {PRODUCTS.map(({ name, brand }) => (
-                <RevealOnScroll
-                  key={name}
-                  as="li"
-                  className="rounded-xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm"
-                >
-                  <h3 className="text-xl font-semibold text-brand-lime">
-                    {name}
-                  </h3>
-                  <p className="mt-2 text-white/80">
-                    Marca: <span className="font-medium text-white">{brand}</span>
-                  </p>
-                </RevealOnScroll>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        <section
           id="sobre"
           className="scroll-mt-20 bg-background px-4 py-16 sm:px-6 sm:py-20 lg:px-8"
         >
@@ -511,6 +435,82 @@ export default function Home() {
           </div>
         </section>
 
+        <section
+          id="produtos"
+          className="relative overflow-hidden scroll-mt-20 bg-brand-blue px-4 py-16 text-white sm:px-6 sm:py-20 lg:px-8"
+        >
+          <BrandPattern />
+          <div className="relative z-10 mx-auto max-w-6xl">
+            <div className="max-w-2xl">
+              <h2 className="text-3xl font-bold text-brand-lime sm:text-4xl">
+                Produtos
+              </h2>
+              <p className="mt-4 text-lg text-white/85">
+                Utilizamos marcas reconhecidas para garantir limpeza, cuidado
+                e perfume duradouro nas suas roupas.
+              </p>
+            </div>
+
+            <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {PRODUCTS.map(({ name, brand }) => (
+                <RevealOnScroll
+                  key={name}
+                  as="li"
+                  className="rounded-xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm"
+                >
+                  <h3 className="text-xl font-semibold text-brand-lime">
+                    {name}
+                  </h3>
+                  <p className="mt-2 text-white/80">
+                    Marca: <span className="font-medium text-white">{brand}</span>
+                  </p>
+                </RevealOnScroll>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        <section
+          id="servicos"
+          className="scroll-mt-20 bg-background px-4 py-16 sm:px-6 sm:py-20 lg:px-8"
+        >
+          <div className="mx-auto max-w-6xl">
+            <div className="max-w-2xl">
+              <h2 className="text-3xl font-bold text-brand-blue sm:text-4xl">
+                Nossos serviços
+              </h2>
+              <p className="mt-4 text-lg text-brand-blue/75">
+                Tudo o que você precisa para manter o guarda-roupa em dia, em
+                um só lugar.
+              </p>
+            </div>
+
+            <ul className="mt-12 grid gap-6 lg:grid-cols-2">
+              {SERVICES.map(({ title, icon: Icon, description }, index) => (
+                <RevealOnScroll
+                  key={title}
+                  as="li"
+                  style={{
+                    animationDelay: `${index * 150}ms`,
+                    transitionDelay: `${index * 150}ms`,
+                  }}
+                  className="flex flex-col rounded-xl border border-brand-blue/10 bg-white p-6 shadow-sm transition-all duration-300 hover:border-brand-lime hover:shadow-md"
+                >
+                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-brand-blue/5 text-brand-blue">
+                    <Icon className="h-6 w-6" aria-hidden="true" />
+                  </span>
+                  <h3 className="mt-3 text-xl font-semibold text-brand-blue">
+                    {title}
+                  </h3>
+                  <p className="mt-3 flex-1 leading-relaxed text-brand-blue/70">
+                    {description}
+                  </p>
+                </RevealOnScroll>
+              ))}
+            </ul>
+          </div>
+        </section>
+              
         <section
           id="hotel"
           className="scroll-mt-20 px-4 py-16 sm:px-6 sm:py-20 lg:px-8"
