@@ -281,7 +281,7 @@ export default function Home() {
                   garantindo excelentes resultados em cada ciclo.
                 </p>
                 <p>
-                  Localizada ao lado do Hotel Grand Sky Urbanova, em São José
+                  Localizada no térreo do Hotel Grand Sky Urbanova, em São José
                   dos Campos, a Lavanderia COP 30 foi pensada para proporcionar
                   uma experiência diferenciada, tanto para hóspedes quanto para
                   moradores da região. Contamos com um ambiente moderno, seguro,
@@ -291,9 +291,9 @@ export default function Home() {
                 </p>
                 <p>
                   Nosso compromisso é oferecer muito mais do que uma lavanderia:
-                  queremos proporcionar praticidade, transparência e uma excelente
+                  queremos proporcionar praticidade e uma excelente
                   experiência, para que você tenha suas roupas sempre limpas com
-                  a qualidade e a conveniência que o seu dia a dia merece.
+                  a qualidade e a agilidade que o seu dia a dia merece.
                 </p>
               </div>
 
@@ -357,13 +357,13 @@ export default function Home() {
                   {
                     size: "GG",
                     quantity: 1,
-                    kg: "22kg",
+                    kg: "23kg",
                     price: "R$ 39,90",
                     image: "/assets/images/lavadora-gg.png",
                     highlight: true,
                     vantagens: [
                       "Única em São José dos Campos",
-                      "Até 22kg por ciclo",
+                      "Até 23kg por ciclo",
                       "Ideal para edredons e cobertores king",
                       "Máxima capacidade disponível",
                     ],
@@ -451,7 +451,7 @@ export default function Home() {
               </p>
             </div>
 
-            <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
               {PRODUCTS.map(({ name, brand }) => (
                 <RevealOnScroll
                   key={name}

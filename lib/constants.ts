@@ -22,7 +22,6 @@ export const NAV_LINKS = [
 ] as const;
 
 export const PRODUCTS = [
-  { name: "Desamassa", brand: "Comfort" },
   { name: "Amaciante", brand: "Comfort" },
   { name: "Sabão Líquido", brand: "Omo" },
 ] as const;
